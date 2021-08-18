@@ -5,7 +5,7 @@
         "text",
         "wrapper",
         "link",
-        "element",
+        "element"
     ],
     "type": "contao-bundle",
     "license": "GPL-3.0-or-later",
