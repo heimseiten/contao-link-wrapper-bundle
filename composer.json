@@ -1,10 +1,11 @@
 {
     "name": "heimseiten/contao-link-wrapper-bundle",
-    "description": "Fügt einen Link um ein Textelement herum.",
+    "description": "Setzt einen Link um ein Textelement.",
     "keywords": [
         "text",
         "wrapper",
-        "link"
+        "link",
+        "element",
     ],
     "type": "contao-bundle",
     "license": "GPL-3.0-or-later",
@@ -46,6 +47,5 @@
     },
     "extra": {
         "contao-manager-plugin": "Heimseiten\\ContaoLinkWrapperBundle\\ContaoManager\\Plugin"
-    },
-    "version": "0.0.1"
+    }
 }
