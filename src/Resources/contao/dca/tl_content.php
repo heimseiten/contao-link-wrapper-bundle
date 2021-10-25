@@ -7,9 +7,11 @@ use Contao\DataContainer;
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['linkWrapper'] = [ 
     'label'     => &$GLOBALS['TL_LANG']['tl_content']['linkWrapper'],
-    'inputType' => 'pageTree',
-    'eval' => array('tl_class'  => 'w50', 'fieldType' => 'radio'),
-    'sql'       => "blob NULL"
+    'exclude'                 => true,
+	'search'                  => true,
+	'inputType'               => 'text',
+	'eval'                    => array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'dcaPicker'=>true, 'tl_class'=>'w50'),
+	'sql'                     => "varchar(255) NOT NULL default ''"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['openInNewWindow'] = [
