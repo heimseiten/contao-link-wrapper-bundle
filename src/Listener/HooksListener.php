@@ -23,7 +23,12 @@ class HooksListener
         if (TL_MODE === 'BE' || !$object->linkWrapper) { return $buffer; }
         $openInNewWindow = '';
         if ($object->openInNewWindow) { $openInNewWindow = ' target="_blank" '; }
-        $buffer = '<a class="wrapper_link" href="{{link_url::' . $object->linkWrapper . '}}"' . $openInNewWindow . ' style="text-decoration:none;">' . $buffer . '</a>';
+
+        $buffer = preg_replace('/class="([^"]+)"/', 'class="$1 wrapper_link"', $buffer, 1);
+        $buffer = preg_replace('/<div/', '<a href="{{link_url::' . $object->linkWrapper . '}}"' . $openInNewWindow . ' style="text-decoration:none;"', $buffer, 1);
+        $buffer = substr($buffer,0,-6);
+        $buffer .= '</a>';
+
         return $buffer;
     }
 
