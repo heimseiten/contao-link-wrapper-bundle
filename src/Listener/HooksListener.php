@@ -26,9 +26,8 @@ class HooksListener
 
         $buffer = preg_replace('/class="([^"]+)"/', 'class="$1 wrapper_link"', $buffer, 1);
         $buffer = preg_replace('/<div/', '<a href="{{link_url::' . $object->linkWrapper . '}}"' . $openInNewWindow . ' style="text-decoration:none;"', $buffer, 1);
-        $buffer = substr($buffer,0,-6);
-        $buffer .= '</a>';
-
+        $buffer = preg_replace( '~(.*)</div>~su', '${1}</a>', $buffer);
+        
         return $buffer;
     }
 
