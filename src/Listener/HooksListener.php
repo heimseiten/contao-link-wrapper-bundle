@@ -20,7 +20,9 @@ class HooksListener
 
     private function processBuffer(string $buffer, $object): string
     {
-        if (TL_MODE === 'BE' || !$object->linkWrapper) { return $buffer; }
+        if (System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create('')) || !$object->linkWrapper) { 
+            return $buffer; 
+        }
         $openInNewWindow = '';
         if ($object->openInNewWindow) { $openInNewWindow = ' target="_blank" '; }
 
