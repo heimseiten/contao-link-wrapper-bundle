@@ -11,6 +11,9 @@ use Contao\Module;
 use Contao\ContentModel;
 use Contao\Widget;
 
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
+
 class HooksListener
 {
     public function onGetContentElement(ContentModel $element, string $buffer): string
