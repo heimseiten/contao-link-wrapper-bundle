@@ -24,10 +24,11 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['openInNewWindow'] = [
 $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = function (DataContainer $dc): void {
     foreach ($GLOBALS['TL_DCA'][$dc->table]['palettes'] as $key => $palette) {
         if (\is_string($palette)) {
-            if ($key == 'text') { 
+            if ($key == 'text' || $key == 'headline' || $key == 'element_group') { 
                 PaletteManipulator::create()
-                ->addField('linkWrapper', 'text_legend', PaletteManipulator::POSITION_APPEND)
-                ->addField('openInNewWindow', 'text_legend', PaletteManipulator::POSITION_APPEND)
+                ->addLegend('linkWrapper_legend', 'type_legend', PaletteManipulator::POSITION_AFTER)
+                ->addField('linkWrapper', 'linkWrapper_legend', PaletteManipulator::POSITION_APPEND)
+                ->addField('openInNewWindow', 'linkWrapper_legend', PaletteManipulator::POSITION_APPEND)
                 ->applyToPalette($key, $dc->table);
             }
         }
